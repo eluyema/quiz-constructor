@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: quiz_password
+      POSTGRES_DB: quiz_db
+      POSTGRES_USER: quiz_user
+    ports:
+      - 5432:5432
+    volumes: 
+      - ./postgres-data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
