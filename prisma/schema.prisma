@@ -11,6 +11,38 @@ datasource db {
 }
 
 model Quiz {
-  id   String @id @default(uuid())
-  name String
+  id          String   @id @default(uuid())
+  displayName String
+  slug        String   @unique
+  screens     Screen[] @relation("screen_quiz")
+}
+
+model QuizConfigUnit {
+  id                       String   @id @default(uuid())
+  locale                   String
+  utmSource                String?
+  configData               Json
+  quizUnitsWithContentData Screen[] @relation("quizUnitsWithContentData")
+  quizUnitsWithFormData    Screen[] @relation("quizUnitsWithFormData")
+}
+
+model Screen {
+  id               String           @id @default(uuid())
+  screenTemplateId String
+  quizId           String
+  quiz             Quiz             @relation("screen_quiz", fields: [quizId], references: [id])
+  screenTemplate   ScreenTemplate   @relation("screens", fields: [screenTemplateId], references: [id])
+  contentData      QuizConfigUnit[] @relation("quizUnitsWithContentData")
+  formData         QuizConfigUnit[] @relation("quizUnitsWithFormData")
+}
+
+model ScreenTemplate {
+  id              String   @id @default(uuid())
+  displayName     String
+  keyName         String
+  contentConfig   Json?
+  formConfig      Json?
+  contentConfigId String?
+  formConfigId    String?
+  screens         Screen[] @relation("screens")
 }

@@ -1,14 +1,20 @@
 import { Module } from '@nestjs/common';
-import { QuizzesModule } from './modules/quizzes/quizzes.module';
+import { QuizModule } from './modules/quiz/quiz.module';
 import { ConfigModule } from '@nestjs/config';
+import { PrismaModule } from './db/prisma/prisma.module';
+import { QuizConfigUnitModule } from './modules/quizConfigUnit/quizConfigUnit.module';
+import { ScreenTemplateModule } from './modules/screenTemplate/screenTemplate.module';
 
 @Module({
   imports: [
-    QuizzesModule,
+    PrismaModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
     }),
+    QuizModule,
+    QuizConfigUnitModule,
+    ScreenTemplateModule,
   ],
   controllers: [],
   providers: [],
