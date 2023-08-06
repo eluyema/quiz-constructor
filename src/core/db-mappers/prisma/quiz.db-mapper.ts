@@ -1,5 +1,5 @@
 import { Prisma, Screen as PrismaScreen, Quiz as PrismaQuiz } from '@prisma/client';
-import { Quiz } from '../../entities/Quiz';
+import { QuizEntity } from '../../entities/quiz.entity';
 import { ScreenDbMapper } from './screen.db-mapper';
 
 export class QuizDbMapper {
@@ -8,10 +8,10 @@ export class QuizDbMapper {
 
     const screens =
       quizDB.screens && quizDB.screens.map((screen) => screenDbMapper.toEntity(screen));
-    return new Quiz(quizDB.id, quizDB.displayName, quizDB.slug, screens || null);
+    return new QuizEntity(quizDB.id, quizDB.displayName, quizDB.slug, screens || null);
   }
 
-  toDbCreate(quiz: Quiz): Prisma.QuizCreateInput {
+  toDbCreate(quiz: QuizEntity): Prisma.QuizCreateInput {
     return {
       id: quiz.getId(),
       displayName: quiz.getDisplayName(),

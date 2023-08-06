@@ -1,9 +1,9 @@
-import { Quiz } from '../entities/Quiz';
+import { QuizEntity } from '../entities/quiz.entity';
 
 export abstract class IQuizRepository {
-  abstract createQuiz(quiz: Quiz): Promise<Quiz>;
+  abstract createQuiz(quiz: QuizEntity): Promise<QuizEntity>;
 
-  abstract getAllQuizzes(): Promise<Quiz[]>;
+  abstract getAllQuizzes(): Promise<QuizEntity[]>;
 
   abstract deleteQuizById(id: string): Promise<void>;
 

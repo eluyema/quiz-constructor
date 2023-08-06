@@ -40,13 +40,13 @@ CREATE UNIQUE INDEX "_quizUnitsWithFormData_AB_unique" ON "_quizUnitsWithFormDat
 CREATE INDEX "_quizUnitsWithFormData_B_index" ON "_quizUnitsWithFormData"("B");
 
 -- AddForeignKey
-ALTER TABLE "_quizUnitsWithContentData" ADD CONSTRAINT "_quizUnitsWithContentData_A_fkey" FOREIGN KEY ("A") REFERENCES "QuizConfigUnit"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_quizUnitsWithContentData" ADD CONSTRAINT "_quizUnitsWithContentData_A_fkey" FOREIGN KEY ("A") REFERENCES "QuizConfigUnitEntity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_quizUnitsWithContentData" ADD CONSTRAINT "_quizUnitsWithContentData_B_fkey" FOREIGN KEY ("B") REFERENCES "QuizUnit"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_quizUnitsWithFormData" ADD CONSTRAINT "_quizUnitsWithFormData_A_fkey" FOREIGN KEY ("A") REFERENCES "QuizConfigUnit"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_quizUnitsWithFormData" ADD CONSTRAINT "_quizUnitsWithFormData_A_fkey" FOREIGN KEY ("A") REFERENCES "QuizConfigUnitEntity"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_quizUnitsWithFormData" ADD CONSTRAINT "_quizUnitsWithFormData_B_fkey" FOREIGN KEY ("B") REFERENCES "QuizUnit"("id") ON DELETE CASCADE ON UPDATE CASCADE;

@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "QuizConfigUnit" (
+CREATE TABLE "QuizConfigUnitEntity" (
     "id" TEXT NOT NULL,
     "locale" TEXT NOT NULL,
     "utm_source" TEXT NOT NULL,

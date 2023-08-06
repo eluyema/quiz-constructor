@@ -1,2 +1,2 @@
 -- AlterTable
-ALTER TABLE "QuizConfigUnit" ALTER COLUMN "utm_source" DROP NOT NULL;
+ALTER TABLE "QuizConfigUnitEntity" ALTER COLUMN "utm_source" DROP NOT NULL;

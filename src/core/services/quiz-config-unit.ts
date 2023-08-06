@@ -1,6 +1,6 @@
 import { QuizConfigUnitEntity } from '../entities/quiz-config-unit.entity';
 
-export abstract class IScreenService {
+export abstract class IQuizConfigUnitService {
   abstract createConfig(config: QuizConfigUnitEntity): Promise<QuizConfigUnitEntity>;
 
   abstract getAllConfigs(): Promise<QuizConfigUnitEntity[]>;

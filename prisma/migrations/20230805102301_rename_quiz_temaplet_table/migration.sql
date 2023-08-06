@@ -5,7 +5,7 @@
 
 */
 -- DropForeignKey
-ALTER TABLE "Screen" DROP CONSTRAINT "Screen_screenId_fkey";
+ALTER TABLE "ScreenEntity" DROP CONSTRAINT "Screen_screenId_fkey";
 
 -- DropForeignKey
 ALTER TABLE "Screen_Template" DROP CONSTRAINT "Screen_Template_contentConfigId_fkey";
@@ -17,7 +17,7 @@ ALTER TABLE "Screen_Template" DROP CONSTRAINT "Screen_Template_formConfigId_fkey
 DROP TABLE "Screen_Template";
 
 -- CreateTable
-CREATE TABLE "ScreenTemplate" (
+CREATE TABLE "ScreenTemplateEntity" (
     "id" TEXT NOT NULL,
     "displayName" TEXT NOT NULL,
     "keyName" TEXT NOT NULL,
@@ -28,10 +28,10 @@ CREATE TABLE "ScreenTemplate" (
 );
 
 -- AddForeignKey
-ALTER TABLE "Screen" ADD CONSTRAINT "Screen_screenId_fkey" FOREIGN KEY ("screenId") REFERENCES "ScreenTemplate"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ScreenEntity" ADD CONSTRAINT "Screen_screenId_fkey" FOREIGN KEY ("screenId") REFERENCES "ScreenTemplateEntity"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "ScreenTemplate" ADD CONSTRAINT "ScreenTemplate_contentConfigId_fkey" FOREIGN KEY ("contentConfigId") REFERENCES "QuizConfigUnit"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "ScreenTemplateEntity" ADD CONSTRAINT "ScreenTemplate_contentConfigId_fkey" FOREIGN KEY ("contentConfigId") REFERENCES "QuizConfigUnitEntity"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "ScreenTemplate" ADD CONSTRAINT "ScreenTemplate_formConfigId_fkey" FOREIGN KEY ("formConfigId") REFERENCES "QuizConfigUnit"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "ScreenTemplateEntity" ADD CONSTRAINT "ScreenTemplate_formConfigId_fkey" FOREIGN KEY ("formConfigId") REFERENCES "QuizConfigUnitEntity"("id") ON DELETE SET NULL ON UPDATE CASCADE;

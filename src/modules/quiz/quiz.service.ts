@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { QuizRepository } from './quiz.repository';
 import { IQuizService } from '../../core/services/quiz';
-import { Quiz } from '../../core/entities/Quiz';
+import { QuizEntity } from '../../core/entities/quiz.entity';
 
 @Injectable()
 export class QuizService implements IQuizService {
   constructor(private readonly quizRepository: QuizRepository) {}
 
-  createQuiz(quiz: Quiz) {
+  createQuiz(quiz: QuizEntity) {
     return this.quizRepository.createQuiz(quiz);
   }
 

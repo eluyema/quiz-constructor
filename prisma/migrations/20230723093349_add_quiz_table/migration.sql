@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Quiz" (
+CREATE TABLE "QuizEntity" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 

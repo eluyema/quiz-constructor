@@ -10,14 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Quiz {
+model QuizEntity {
   id          String   @id @default(uuid())
   displayName String
   slug        String   @unique
   screens     Screen[] @relation("screen_quiz")
 }
 
-model QuizConfigUnit {
+model QuizConfigUnitEntity {
   id                       String   @id @default(uuid())
   locale                   String
   utmSource                String?
@@ -26,20 +26,21 @@ model QuizConfigUnit {
   quizUnitsWithFormData    Screen[] @relation("quizUnitsWithFormData")
 }
 
-model Screen {
-  id               String           @id @default(uuid())
-  screenTemplateId String
-  quizId           String
-  quiz             Quiz             @relation("screen_quiz", fields: [quizId], references: [id])
-  screenTemplate   ScreenTemplate   @relation("screens", fields: [screenTemplateId], references: [id])
-  contentData      QuizConfigUnit[] @relation("quizUnitsWithContentData")
-  formData         QuizConfigUnit[] @relation("quizUnitsWithFormData")
+model ScreenEntity {
+  id                  String           @id @default(uuid())
+  screenTemplateId    String
+  quizId              String
+  quiz                Quiz             @relation("screen_quiz", fields: [quizId], references: [id])
+  screenTemplate      ScreenTemplate   @relation("screens", fields: [screenTemplateId], references: [id])
+  contentData         QuizConfigUnit[] @relation("quizUnitsWithContentData")
+  formData            QuizConfigUnit[] @relation("quizUnitsWithFormData")
+  nextScreenCondition Json
 }
 
-model ScreenTemplate {
+model ScreenTemplateEntity {
   id              String   @id @default(uuid())
   displayName     String
-  keyName         String
+  keyName         String   @unique
   contentConfig   Json?
   formConfig      Json?
   contentConfigId String?

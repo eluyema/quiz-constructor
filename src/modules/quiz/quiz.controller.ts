@@ -1,7 +1,7 @@
 import { Controller, Post, Body, HttpCode, Get, Delete, Param } from '@nestjs/common';
 import { QuizService } from './quiz.service';
-import { CreateQuizDto } from './dtos/CreateQuizDto';
-import { CreateQuizDtoMapper } from './dto-mappers/createQuiz.dto-mapper';
+import { CreateQuizDto } from './dtos/create-quiz.dto';
+import { CreateQuizDtoMapper } from './dto-mappers/create-quiz.dto-mapper';
 
 @Controller('quizzes')
 export class QuizController {
